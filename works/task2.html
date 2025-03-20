@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home & Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .heading {
+            text-align: center;
+            margin: 0.5em;
+            border-radius: 0.5cap;
+            padding: 1em 2em;
+            font-weight: bold;
+        }
+
+        .content-body {
+            margin: 0.5em;
+            font-size: 1.1em;
+            border-radius: 0.5cap;
+            padding: 10px;
+        }
+
+        .mybutton {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        button {
+            font-size: 1.1em;
+            margin: 0 auto;
+            padding: 0.5em 1em;
+            border-radius: 0.3em;
+            border: 1px solid black;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+        
+        #home-page {
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            padding: 1em;
+        }
+
+        #home-page .heading {
+            background-color: #D3D3D3; 
+            color: black;
+        }
+
+        #home-page .content-body {
+            background-color: #E0FFFF; 
+            color: black;
+        }
+
+        
+        #dashboard-page {
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+            padding: 1em;
+        }
+
+        #dashboard-page .heading {
+            background-color: #333333; 
+            color: white;
+        }
+
+        #dashboard-page .content-body {
+            background-color: #666666; 
+            color: white;
+            padding: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="home-page">
+        <div class="heading">
+            <h1>Welcome to My Custom Designed Page!</h1>
+        </div>
+
+        <div class="content-body">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia enim sunt sapiente nemo assumenda eius tenetur architecto repellat, minus aut! Unde, ut hic. Pariatur repellat fugit esse explicabo officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ipsum quibusdam veritatis consequatur perspiciatis delectus unde vitae, earum suscipit nisi ad veniam amet ipsam! Blanditiis culpa delectus ad cumque iste.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia enim sunt sapiente nemo assumenda eius tenetur architecto repellat, minus aut! Unde, ut hic. Pariatur repellat fugit esse explicabo officia! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+        </div>
+
+        <div class="mybutton">
+            <button onclick="showDashboard()">Click here to see the Dashboard</button>
+        </div>
+    </div>
+
+    
+    <div id="dashboard-page" style="display: none;">
+        
+
+        <div class="heading">
+            <h1>Welcome to the Custom Dashboard</h1>
+            <h3>It doesn't have any functionalities yet!</h3>
+        </div>
+
+        <div class="content-body">
+            
+        </div>
+
+        <div class="mybutton">
+            <button onclick="showHome()">Click here to return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function showDashboard() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('dashboard-page').style.display = 'block';
+        }
+
+        function showHome() {
+            document.getElementById('dashboard-page').style.display = 'none';
+            document.getElementById('home-page').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

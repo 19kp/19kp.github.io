@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #a59696;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin: 3px;
+            border-radius: 5px;
+            border: 1px solid #070606;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .green-button {
+            background-color: #a5d6a7;
+            color: #004d40;
+        }
+
+        .green-button:hover {
+            background-color: #81c784;
+        }
+
+        .orange-button {
+            background-color: #ffcc80;
+            color: #5d4037;
+        }
+
+        .orange-button:hover {
+            background-color: #ffb74d;
+        }
+
+        h3 {
+            color: #080808;
+        }
+
+        #demo_div {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        p {
+            padding: 5px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin: 5px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Personal Information</h2>
+
+    
+    <table>
+        <tr>
+            <td><input type="text" id="name" placeholder="Name"></td>
+            <td><input type="text" id="age" placeholder="Age"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="email" placeholder="Email"></td>
+            <td><input type="text" id="student_id" placeholder="Student ID"></td>
+        </tr>
+    </table>
+
+    
+    <button class="green-button" onclick="insert()">Insert Data</button>
+    <button class="green-button" onclick="showAllData()">Show All</button>
+    <button class="orange-button" onclick="clearInputFields()">Clear Inputs</button>
+    <button class="orange-button" onclick="clearOutput()">Clear Display</button>
+
+    <h3>Search for a Person by Name:</h3>
+    <input type="text" id="searchName" placeholder="Enter Name">
+    <button class="green-button" onclick="searchByName()">Search</button>
+
+    <h3>Current Inventory:</h3>
+    <div id="demo_div"></div>
+
+    <script>
+        function Person(name, age, email, student_id) {
+            this.name = name;
+            this.age = age;
+            this.email = email;
+            this.student_id = student_id;
+            this.description = function() {
+                return `Name: ${this.name}, Age: ${this.age}, Email: ${this.email}, Student ID: ${this.student_id}`;
+            };
+        }
+
+        let people = [];
+
+        function insert() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let email = document.getElementById("email").value;
+            let student_id = document.getElementById("student_id").value;
+
+            let newPerson = new Person(name, age, email, student_id);
+            people.push(newPerson);
+            clearInputFields();
+        }
+        function clearInputFields() {
+            document.getElementById("name").value = '';
+            document.getElementById("age").value = '';
+            document.getElementById("email").value = '';
+            document.getElementById("student_id").value = '';
+        }
+
+        function showAllData() {
+            if (people.length > 0) {
+                let recordsHtml = '';
+                for (let i = 0; i < people.length; i++) {
+                    recordsHtml += `<p>${people[i].description()}</p>`;
+                }
+                document.getElementById("demo_div").innerHTML = recordsHtml;
+            } else {
+                document.getElementById("demo_div").innerHTML = "No data available.";
+            }
+        }
+
+        
+        function searchByName() {
+            let searchName = document.getElementById("searchName").value.toLowerCase();
+            let results = people.filter(person => person.name.toLowerCase().includes(searchName));
+
+            if (results.length > 0) {
+                let recordsHtml = '';
+                results.forEach(person => {
+                    recordsHtml += `<p>${person.description()}</p>`;
+                });
+                document.getElementById("demo_div").innerHTML = recordsHtml;
+            } else {
+                document.getElementById("demo_div").innerHTML = "No matching records found.";
+            }
+        }
+
+        
+        function clearOutput() {
+            document.getElementById("demo_div").innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>

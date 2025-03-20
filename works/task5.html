@@ -1,0 +1,121 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding-top: 50px;
+        }
+
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Set a common width for both rows */
+        .row {
+            display: flex;
+            gap: 10px;
+            width: 1050px; /* Adjust this as needed */
+            justify-content: center;
+        }
+
+        /* Styling input boxes */
+        input[type="text"] {
+            flex: 1; /* This makes them all equal width */
+            height: 40px;
+            font-size: 16px;
+            padding: 5px 10px;
+            border: 1px solid #aaa;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        /* Styling buttons */
+        button {
+            flex: 1; /* This makes them all equal width */
+            height: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #aaa;
+            background-color: #eaeaea;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="calculator-container">
+        
+        <!-- First row: Input fields -->
+        <div class="row">
+            <input type="text" id="valueX" placeholder="Enter the value of X">
+            <input type="text" id="valueY" placeholder="Enter the value of Y">
+            <input type="text" id="result" placeholder="Result will appear here" readonly="">
+        </div>
+
+        <!-- Second row: Buttons -->
+        <div class="row">
+            <button onclick="add()">Addition (X + Y)</button>
+            <button onclick="subtract()">Subtraction (X - Y)</button>
+            <button onclick="multiply()">Multiplication (X * Y)</button>
+            <button onclick="divide()">Division (X / Y)</button>
+        </div>
+
+    </div>
+
+    <script>
+        function getValues() {
+            const x = parseFloat(document.getElementById('valueX').value);
+            const y = parseFloat(document.getElementById('valueY').value);
+            return { x, y };
+        }
+
+        function add() {
+            const { x, y } = getValues();
+            const result = x + y;
+            displayResult(result);
+        }
+
+        function subtract() {
+            const { x, y } = getValues();
+            const result = x - y;
+            displayResult(result);
+        }
+
+        function multiply() {
+            const { x, y } = getValues();
+            const result = x * y;
+            displayResult(result);
+        }
+
+        function divide() {
+            const { x, y } = getValues();
+            if (y === 0) {
+                displayResult("Cannot divide by zero");
+            } else {
+                const result = x / y;
+                displayResult(result);
+            }
+        }
+
+        function displayResult(result) {
+            document.getElementById('result').value = result;
+        }
+    </script>
+
+
+
+</body></html>

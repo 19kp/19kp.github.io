@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combined HTML</title>
+</head>
+<body>
+    
+    <h2>Shape Generator</h2>
+    <input id="user_input" placeholder="Enter size" onkeyup="generate_shape();" />
+    <div id="shape_content"></div>
+
+    
+    <h2>Sum Calculator</h2>
+    <input id="input_a" placeholder="Enter A" />
+    <input id="input_b" placeholder="Enter B" />
+    <button onclick="calculate();">Calculate</button>
+    <div id="sum_content"></div>
+
+    <script>
+        
+        let colors = ["red", "blue", "orange", "green"];
+        let idx = 0;
+        let size = colors.length;
+
+        function generate_shape() {
+            let n = parseInt(document.getElementById("user_input").value);
+            let text = "";
+
+            for (let i = 0; i <= n; i++) {
+                for (let j = 0; j < i; j++) {
+                    text += "* ";
+                }
+                text += "<br>";
+            }
+
+            document.getElementById("shape_content").innerHTML = text;
+            document.getElementById("shape_content").style.color = colors[idx];
+            idx = (idx + 1) % size;
+        }
+
+        // Sum Calculator Script
+        function calculate() {
+            let a = parseInt(document.getElementById("input_a").value);
+            let b = parseInt(document.getElementById("input_b").value);
+
+            // Validate inputs
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("sum_content").innerHTML = "Please enter valid numbers for A and B.";
+                return;
+            }
+
+            let sum = ((b - a + 1) * (a + b)) / 2;
+
+            document.getElementById("sum_content").innerHTML = "Sum: " + sum;
+        }
+    </script>
+</body>
+</html>

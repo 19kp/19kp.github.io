@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        input, button { padding: 10px; font-size: 16px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Task Calculator</h2>
+    <input type="text" id="taskInput" placeholder="Enter Task">
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="undoTask()">Undo Task </button>
+
+    <div style="font-weight:bold;"Process line</div>
+    <div id="stackDisplay">Process line</div>
+
+    <script>
+        let tasks = [];
+
+        function addTask() {
+            let task = document.getElementById("taskInput").value.trim();
+            if (task) tasks.push(task);
+            document.getElementById("taskInput").value = "";
+            updateDisplay();
+        }
+
+        function undoTask() {
+            tasks.pop();
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById("stackDisplay").innerText = tasks.length ? tasks.join(" , ") : "Process line";
+        }
+    </script>
+
+</body>
+</html>

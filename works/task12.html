@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="age" placeholder="Age">
+    <input type="text" id="email" placeholder="Email"><br><br>
+    <input type="text" id="student_id" placeholder="Student ID">
+
+    <button onclick="insert()">Insert Info</button>
+    <button onclick="show_personal_info()">Show Info</button>
+
+    <h3>Inserted Records:</h3>
+    <div id="demo_div"></div>
+
+    <script>
+        let people = []; 
+
+        function insert() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let email = document.getElementById("email").value;
+            let student_id = document.getElementById("student_id").value;
+
+            let newPerson = {
+                name: name,
+                age: age,
+                email: email,
+                student_id: student_id,
+                description: function() {
+                    return `Name: ${this.name}, Age: ${this.age}, Email: ${this.email}, Student ID: ${this.student_id}`;
+                }
+            };
+
+            people.push(newPerson);
+        }
+
+        function show_personal_info() {
+            if (people.length > 0) {
+                let recordsHtml = '';
+                for (let i = 0; i < people.length; i++) {
+                    recordsHtml += `<p>${people[i].description()}</p>`;
+                }
+                document.getElementById("demo_div").innerHTML = recordsHtml;
+            } else {
+                document.getElementById("demo_div").innerHTML = "No information has been inserted yet.";
+            }
+
+            console.log(people);
+        }
+    </script>
+</body>
+</html>

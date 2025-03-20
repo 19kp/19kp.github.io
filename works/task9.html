@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="number"] {
+            padding: 15px;      
+            font-size: 20px;     
+            margin: 15px;        
+            width: 300px;        
+            height: 60px;        
+            border-radius: 8px;  
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 15px 30px;  
+            font-size: 20px;     
+            margin: 15px;       
+            border-radius: 8px;  
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        #result {
+            font-size: 22px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Grade Calculator</h2>
+
+    <input type="number" id="score" placeholder="Enter score" min="0" max="100">
+
+    <button onclick="calculateGrade()">Get Grade</button>
+
+    <p id="result">Your grade is: </p>
+
+    <script>
+        function calculateGrade() {
+            let score = parseFloat(document.getElementById('score').value);
+            let grade = '';
+
+            if (score >= 90 && score <= 100) {
+                grade = 'A';
+            } else if (score >= 80 && score < 90) {
+                grade = 'B';
+            } else if (score >= 70 && score < 80) {
+                grade = 'C';
+            } else if (score >= 60 && score < 70) {
+                grade = 'D';
+            } else if (score >= 0 && score < 60) {
+                grade = 'F';
+            } else {
+                grade = 'Invalid score';
+            }
+
+            document.getElementById('result').innerText = 'Your grade is: ' + grade;
+        }
+    </script>
+
+</body>
+</html>
